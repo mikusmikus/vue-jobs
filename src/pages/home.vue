@@ -1,40 +1,30 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row ">
       <div class="col-xs-12">
-        <h1>SEARCHBAR HERE</h1>
-      </div>
-      </div>
-    <div class="row center-xs">
-      <div class="col-xs-12">
-        <SearchBar>
-        <Button
-          label="Search"
-        />
-        </SearchBar>
+        <SearchBar v-model:searchValue="searchText" @buttonClick="handleSearch(searchText)" />
       </div>
     </div>
     <div class="row">
       <div class="col-xs-4">
-          <!-- < LOCATION Search  component/>  -->
-        <h1>Searchlist here</h1>
-        <h4>location</h4>
-        <input type="text">
-        <div>
-        <input type="radio">
-        <label for="">newyork</label>
+        <input type="checkbox" id="fullTime" v-model="isFullTime" />
+        <label for="fullTime">Full time</label>
+        <SearchLocation
+          v-model:locationValue="locationText"
+          :cities="locations"
+        />
+        <div :key="city" v-for="city in locations">
+          <input type="radio" :value="city" v-model="selected" @change="handleLocationSearch" />
+          <label>{{ city }}</label>
         </div>
-        <input type="radio">
-        <input type="radio">
-        <input type="radio">
       </div>
-      <div class="col-xs-8" >
-        <div class="row">
+      <div class="col-xs-8">
+        <div class="row center-xs">
           <div class="col-xs-12" v-if="loading">
-            <h1>Loading....</h1>
+            <Loader />
           </div>
-          <div class="col-xs-12" v-else v-for="job in jobList" :key="job.id">
-            <JobCard :job="job" @buttonClick="handleClick(job.id)" label="assd" />
+          <div class="col-xs-12" v-else v-for="job in showFullTimeJobs" :key="job.id">
+            <JobCard :job="job" @buttonClick="handleSingleJob(job.id)" />
           </div>
         </div>
       </div>
@@ -49,15 +39,42 @@ import axios from 'axios';
 import router from '@/router';
 import JobCard from '../components/job-card/job-card.vue';
 import SearchBar from '../components/search/search.vue';
+import SearchLocation from '../components/search-location/search-location.vue';
 import Button from '../components/button/button.vue';
+import Loader from '../components/loader/loader.vue';
 import { Job } from '../helpers/types/types';
 
+interface Data {
+  loading: boolean;
+  searchText: string;
+  locationText: string;
+  jobList: Job[];
+  page: number;
+  locations: string[];
+  selected: string;
+  isFullTime: boolean;
+}
+const locations = ['London', 'Amsterdam', 'New York', 'Berlin'];
+
 export default defineComponent({
-  components: { JobCard, SearchBar, Button },
-  data: () => ({
-    loading: false,
-    jobList: [] as Job[],
-  }),
+  components: {
+    JobCard,
+    SearchBar,
+    SearchLocation,
+    Loader,
+  },
+  data(): Data {
+    return {
+      loading: false,
+      searchText: '',
+      locationText: '',
+      page: 1,
+      jobList: [],
+      locations,
+      selected: '',
+      isFullTime: false,
+    };
+  },
   mounted() {
     // const accessPoint = 'https://cors-anywhere.herokuapp.com';
     const url = 'https://jobs.github.com/positions.json';
@@ -68,12 +85,42 @@ export default defineComponent({
     });
   },
   methods: {
-    handleClick(id: string) {
+    handleSingleJob(id: string) {
+      console.log(this.searchText);
       router.push({ name: 'job', params: { id } });
       // router.push({ path: `/job/${id}` });
     },
+    handleSearch(text: string) {
+      this.loading = true;
+      const searchUrl = 'https://jobs.github.com/positions.json?search=';
+      axios.get(`${searchUrl}${this.searchText}`).then(({ data }) => {
+        this.jobList = data.map((job: Job) => job);
+
+        this.loading = false;
+      });
+    },
+    handleLocationSearch() {
+      this.loading = true;
+      const searchUrl = `https://jobs.github.com/positions.json?location=${this.selected}`;
+      axios.get(`${searchUrl}${this.searchText}`).then(({ data }) => {
+        this.jobList = data.map((job: Job) => job);
+        console.log(data);
+        this.loading = false;
+      });
+    },
   },
-  computed: {},
+  handleLocationValue(text: string) {
+    console.log(text);
+    console.log(this.locationText);
+  },
+  computed: {
+    showFullTimeJobs(): Job[] {
+      if (this.isFullTime) {
+        return this.jobList.filter((job) => job.type === 'Full Time');
+      }
+      return this.jobList;
+    },
+  },
 });
 </script>
 <style scoped lang="scss"></style>

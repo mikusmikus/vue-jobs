@@ -1,22 +1,42 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12" v-if="loading">
-        <h1>Loading....</h1>
+    <div class="row " v-if="loading">
+      <div class="col-xs-12">
+        <Loader />
       </div>
-      <div v-else class="col-xs-12">
-        <h1>this is Job page</h1>
+    </div>
+    <div class="row" v-else>
+      <div class="col-xs-4">
+        <Button label="Back" to search @buttonClick="backToHome()" />
+
+        <h4>HOW TO APPLY</h4>
+        <span v-html="job.how_to_apply"></span>
+      </div>
+      <div class="col-xs-8">
+        <Hero :job="job" />
       </div>
     </div>
   </div>
 </template>
+
 <style lang="scss"></style>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
+// eslint-disable-next-line import/order
+// eslint-disable-next-line import/no-cycle
+import router from '@/router';
 import axios from 'axios';
-// import Job from './home.vue';
+import Hero from '../components/hero/hero.vue';
+import Button from '../components/button/button.vue';
+import Loader from '../components/loader/loader.vue';
 
 export default defineComponent({
+  components: {
+    Hero,
+    Button,
+    Loader,
+  },
   data: () => ({
     loading: false,
     job: {},
@@ -31,7 +51,12 @@ export default defineComponent({
       this.loading = false;
     });
   },
-  methods: {},
+  methods: {
+    backToHome() {
+      console.log('back to Home');
+      router.push({ path: '/' });
+    },
+  },
   computed: {},
 });
 </script>

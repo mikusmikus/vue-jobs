@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<style lang="scss"></style>
+<style src='./App.scss' lang="scss"></style>
 <script lang="ts">
 import 'flexboxgrid';
 import axios from 'axios';
