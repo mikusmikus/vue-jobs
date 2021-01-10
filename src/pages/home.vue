@@ -3,7 +3,15 @@
     <div class="row">
       <div class="col-xs-12">
         <h1>SEARCHBAR HERE</h1>
-        <!-- <Search  component/>  -->
+      </div>
+      </div>
+    <div class="row center-xs">
+      <div class="col-xs-12">
+        <SearchBar>
+        <Button
+          label="Search"
+        />
+        </SearchBar>
       </div>
     </div>
     <div class="row">
@@ -40,10 +48,12 @@ import axios from 'axios';
 // eslint-disable-next-line import/no-cycle
 import router from '@/router';
 import JobCard from '../components/job-card/job-card.vue';
+import SearchBar from '../components/search/search.vue';
+import Button from '../components/button/button.vue';
 import { Job } from '../helpers/types/types';
 
 export default defineComponent({
-  components: { JobCard },
+  components: { JobCard, SearchBar, Button },
   data: () => ({
     loading: false,
     jobList: [] as Job[],

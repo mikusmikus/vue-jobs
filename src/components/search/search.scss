@@ -1,0 +1,29 @@
+// https://halilyuce.com/web/how-to-add-font-awesome-to-your-vue-3-project-typescript/
+
+.input-wrapper {
+    width:100%;
+    margin: Auto 0;
+    height: 120px;
+    justify-content: center;
+    background-image: url(https://picsum.photos/id/1031/1600/400);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.input{
+    margin: 0 Auto;
+    width:100%;
+    max-width:700px;
+    border:none;
+    border-radius: 3px;
+    overflow: hidden;
+    outline: none;
+}
+
+.search__button {
+    color: white;
+
+}
