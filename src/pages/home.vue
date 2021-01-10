@@ -4,11 +4,13 @@
       <div class="col-xs-12">
         <h1>SEARCHBAR HERE</h1>
         <!-- <Search  component/>  -->
+        <!-- input Here -->
       </div>
     </div>
     <div class="row">
       <div class="col-xs-4">
           <!-- < LOCATION Search  component/>  -->
+                  <!-- input Here -->
         <h1>Searchlist here</h1>
         <h4>location</h4>
         <input type="text">

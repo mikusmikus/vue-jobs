@@ -1,10 +1,10 @@
 <template>
-  <button type="button" @click="$emit('buttonClick')">
+  <button class="button" type="button" @click="$emit('buttonClick')">
     {{ label }}
   </button>
 </template>
 
-<style lang="scss"></style>
+<style src="./button.scss" lang="scss"></style>
 
 <script lang="ts">
 import { defineComponent } from 'vue';

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <section>
     <div class="container">
       <div class="row start-xs">
         <div class="col-xs-12">
@@ -7,11 +7,16 @@
         </div>
       </div>
     </div>
-    <div >
+  </section>
+  <div>
+    <div>
       <router-link to="/"></router-link>
     </div>
     <router-view />
   </div>
+  <section>
+    <Footer />
+  </section>
 </template>
 
 <style lang="scss"></style>
@@ -21,9 +26,10 @@ import axios from 'axios';
 import { defineComponent } from 'vue';
 import { Job } from './helpers/types/types';
 import Image from './components/image/image.vue';
+import Footer from './components/footer/footer.vue';
 
 const Component = defineComponent({
-  components: { Image },
+  components: { Image, Footer },
   data: () => ({
     loading: false,
     jobList: [] as Job[],
