@@ -1,21 +1,14 @@
 <template>
-  <div class="row">
-    <div class="col-xs-12">
-    </div>
-    <div class="col-xs-12">
-      <h4>LOCATION</h4>
-      <div class="input-wrapper">
-        <input
-          type="text"
-          class="input"
-          placeholder="City, state, zip code or country"
-          :value="locationValue"
-          @change="$emit('update:locationValue', $event.target.value)"
-        />
-        <i class="material-icons md-18">public</i>
-      </div>
-    </div>
-    <div class="col-xs-12"></div>
+  <div class="input-wrapper">
+    <input
+      class="input"
+      type="text"
+      placeholder="City, state, zip code or country"
+      :value="value"
+      @input="handleInput"
+    />
+
+    <i class="material-icons md-18">public</i>
   </div>
 </template>
 
@@ -23,14 +16,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Button from '../button/button.vue';
 
 const SearchBar = defineComponent({
-  name: 'Search-Location',
   components: {},
   props: {
-    cities: {
-      type: Array,
+    value: String,
+  },
+  methods: {
+    handleInput(event: { target: { value: string } }) {
+      this.$emit('handleInput', event.target.value);
     },
   },
 });
