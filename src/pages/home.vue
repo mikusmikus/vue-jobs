@@ -110,21 +110,17 @@ export default defineComponent({
     },
     handleSelectedRadio(text: string) {
       this.selectedRadio = text;
-      console.log('text', text);
-
-      // this.searchText = '';
-      // this.locationText = '';
-      // this.handleFilterJobs();
+      this.searchText = '';
+      this.locationText = '';
+      this.handleFilterJobs();
     },
     handleSearch() {
       this.selectedRadio = '';
-      console.log('this.searchText', this.searchText);
-      // this.selectedRadio = '';
       this.locationText = '';
-      // this.handleFilterJobs();
+      this.handleFilterJobs();
     },
     handleLocationSearch() {
-      // this.searchText = '';
+      this.searchText = '';
       this.selectedRadio = '';
       this.handleFilterJobs();
     },
