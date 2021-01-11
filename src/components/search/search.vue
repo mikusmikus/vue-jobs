@@ -2,15 +2,14 @@
   <div class="search">
     <div class="input-wrapper">
       <input
-        type="text"
         class="input"
+        type="text"
         placeholder="Title, companies, expertise or benefits"
-        :value="searchValue"
-        @change="$emit('update:searchValue', $event.target.value)"
+        :value="value"
+        @change="handleInput"
       />
-       <i class="material-icons md-18">work_outline</i>
+      <i class="material-icons">work_outline</i>
       <Button label="Search" class="searchButton" @buttonClick="$emit('buttonClick')" />
-
     </div>
   </div>
 </template>
@@ -25,9 +24,11 @@ const SearchBar = defineComponent({
   name: 'Search',
   components: { Button },
   props: {
-    inputValue: {
-      type: String,
-      required: true,
+    value: String,
+  },
+  methods: {
+    handleInput(event: { target: { value: string } }) {
+      this.$emit('handleInput', event.target.value);
     },
   },
 });
