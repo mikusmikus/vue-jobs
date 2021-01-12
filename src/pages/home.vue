@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xs-8">
+      <div class="col-sm-8 col-xs-12">
         <div class="row">
           <div class="col-xs-12" v-if="loading">
             <Loader />
@@ -53,7 +53,7 @@
               v-show="pagesCount > 1"
               :disabled="currentPage === 1"
             />
-            <span class="pageDots"   v-show="currentPage <3" > </span>
+            <span class="pageDots" v-show="currentPage < 3"> </span>
             <Button
               class="pageButton"
               @click="currentPage = 1"
@@ -62,7 +62,7 @@
               v-bind:class="{ active: currentPage === 1 }"
             />
             <span class="pageDots">
-              <i class="material-icons" v-show="currentPage > +3">
+              <i class="material-icons" v-show="currentPage > 3">
                 more_horiz
               </i>
             </span>
@@ -79,11 +79,11 @@
                 more_horiz
               </i>
             </div>
-             <span class="pageDots"  v-show="currentPage > pagesCount - 2" > </span>
+            <span class="pageDots" v-show="currentPage > pagesCount - 2"> </span>
             <Button
               class="pageButton"
               @click="currentPage = pagesCount"
-              :label="'pagesCount'"
+              :label="pagesCount"
               v-show="currentPage < pagesCount - 1"
               v-bind:class="{ active: currentPage === pagesCount }"
             />
@@ -205,8 +205,30 @@ export default defineComponent({
         console.log(this.jobList);
       });
     },
+    getMoreData() {
+      this.dataPage += 1;
+      this.loading = true;
+      const accessPoint = 'https://cors-anywhere.herokuapp.com';
+      const url = `https://jobs.github.com/positions.json?page=${this.dataPage}`;
+      axios
+        .get(`${accessPoint}/${url}`)
+        .then(({ data }) => {
+          const filteredJobs = data.map((job: Job) => job);
+          if (!filteredJobs) {
+            return;
+          }
+          this.jobList = [...this.jobList, ...filteredJobs];
+          this.pagesCount = Math.ceil(this.jobList.length / 5);
+          this.loading = false;
+        })
+        .catch((error) => Promise.reject(error));
+    },
   },
-
+  // beforeUpdate() {
+  //   if (this.currentPage === this.pagesCount) {
+  //     this.getMoreData();
+  //   }
+  // },
   computed: {
     pageButtons(): number[] {
       const buttonArr: number[] = [];
@@ -228,7 +250,6 @@ export default defineComponent({
       buttonArr.push(this.currentPage - 1);
       buttonArr.push(this.currentPage);
       buttonArr.push(this.currentPage + 1);
-
       return buttonArr;
     },
     filteredJobs(): Job[] {

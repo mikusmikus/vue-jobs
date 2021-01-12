@@ -6,11 +6,16 @@
 }
 
 .button-wrapper {
+  position: relative;
+  padding-left: 30px;
   display: flex;
   align-items: center;
 }
 
 .material-icons {
+  position: absolute;
+  left: 0;
+  top: -3px;
   font-size: 30px; /* Preferred icon size */
   transform: rotate(180deg);
   color: #1e86ff;
@@ -57,4 +62,5 @@
   font-weight: 500;
   line-height: 21px;
   color: #334680;
+  word-break: break-word;
 }

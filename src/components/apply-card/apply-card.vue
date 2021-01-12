@@ -2,7 +2,7 @@
 <div class="apply-card">
     <div class="button-wrapper">
     <i class="material-icons">arrow_right_alt</i>
-    <Button class="button" label="Back to search" to search @buttonClick="$router.push('/')" />
+    <Button class="button" label="Back to search" @buttonClick="$router.push('/')" />
   </div>
   <div class="applay-wrapper">
     <h4 class="title">how to apply</h4>

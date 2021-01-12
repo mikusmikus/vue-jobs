@@ -2,19 +2,30 @@ $MainBlue: #334680;
 $MainGrey: #b9bdcf;
 
 .card {
-  padding-right: 12px;
-  padding-left: 19px;
   padding: 12px;
-  margin-bottom: 10px;
   background-color: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
   margin-bottom: 32px;
+  min-width: 350px;
+}
+
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 90%;
+  border-radius: 4px;
+}
+.image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
 }
 
 .title {
   font-size: 18px;
-  font-weight: 400;
   line-height: 21px;
   color: $MainBlue;
   cursor: pointer;
@@ -33,7 +44,8 @@ $MainGrey: #b9bdcf;
   margin-bottom: 8px;
 }
 
-.button {
+.fullTime {
+  display: inline-block;
   padding: 6px 8px;
   font-size: 12px;
   font-weight: 700;
@@ -42,7 +54,6 @@ $MainGrey: #b9bdcf;
   background-color: #ffffff;
   border-radius: 4px;
   border: 1px solid $MainBlue;
-  margin-bottom: 21px;
 }
 
 .logo {
@@ -59,24 +70,22 @@ $MainGrey: #b9bdcf;
   display: flex;
   flex-direction: column;
 }
-.eksperiment {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .icons-box {
   display: flex;
-  align-items: center;
+  justify-content: flex-end;
 }
 
 .icon-wrapper {
-  align-items: center;
+  position: relative;
+  padding-left: 20px;
   color: $MainGrey;
 }
 
 .material-icons {
+  position: absolute;
+  left: 0;
+  top: 4px;
   font-size: 15px;
   padding-right: 8px;
 }
@@ -86,18 +95,17 @@ $MainGrey: #b9bdcf;
   padding-right: 8px;
 }
 
-.margin-bottom--8 {
-  margin-bottom: 8px;
-}
-
-.margin-bottom--10 {
-  margin-bottom: 10px;
-}
-
-.margin-bottom--12 {
-  margin-bottom: 12px;
-}
-
-.margin-bottom--32 {
-  margin-bottom: 32px;
+@media only screen and (max-width: 770px) {
+  .icons-box {
+    justify-content: flex-start;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .title--company {
+    font-size: 12px;
+  }
+  .button {
+    margin-bottom: 21px;
+  }
 }

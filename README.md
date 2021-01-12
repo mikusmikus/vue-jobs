@@ -1,4 +1,4 @@
-# vue-mintos
+# vue-job-list
 
 ## Project setup
 ```

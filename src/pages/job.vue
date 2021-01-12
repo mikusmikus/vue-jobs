@@ -6,10 +6,10 @@
       </div>
     </div>
     <div class="row" v-else>
-      <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="col-xs-12 col-sm-4">
         <ApllyCard :job="job"/>
       </div>
-      <div class="col-xs-12 col-sm-8 col-md-9">
+      <div class="col-xs-12 col-sm-8">
         <Hero :job="job" />
       </div>
     </div>
@@ -25,14 +25,12 @@ import { defineComponent } from 'vue';
 import router from '@/router';
 import axios from 'axios';
 import Hero from '../components/hero/hero.vue';
-// import Button from '../components/button/button.vue';
 import ApllyCard from '../components/apply-card/apply-card.vue';
 import Loader from '../components/loader/loader.vue';
 
 export default defineComponent({
   components: {
     Hero,
-    // Button,
     Loader,
     ApllyCard,
   },

@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
-  min-width: 500px;
+  min-width: 350px;
 }
 .input-wrapper {
   position: relative;
@@ -62,4 +62,10 @@
   position: absolute;
   left: 17.5px;
   top: 23px;
+}
+
+@media only screen and (max-width: 770px) {
+  .searchButton {
+    padding: 14px 27px;
+  }
 }
