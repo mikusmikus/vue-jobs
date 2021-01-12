@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container container-fluid">
     <div class="row " v-if="loading">
       <div class="col-xs-12">
         <Loader />
