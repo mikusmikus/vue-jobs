@@ -1,7 +1,7 @@
 <template>
   <div class="button-wrapper">
     <i class="material-icons">arrow_right_alt</i>
-    <Button class="button" label="Back to search" to search @buttonClick="backToHome()" />
+    <Button class="button" label="Back to search" to search @buttonClick="$router.push('/')" />
   </div>
   <h4>HOW TO APPLY</h4>
   <span v-html="job.how_to_apply"></span>
@@ -20,5 +20,6 @@ export default defineComponent({
   props: {
     job: Object,
   },
+
 });
 </script>

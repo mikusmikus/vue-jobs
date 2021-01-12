@@ -1,16 +1,18 @@
 <template>
-  <div :key="city" v-for="city in cities">
-    <input
-      :id="city"
-      type="radio"
-      :checked="selected === city"
-      @change="handleRadioButton(city)"
-    />
-    <label class="label" :for="city">{{ city }}</label>
+  <div class="radio-wrapper">
+    <div :key="city" v-for="city in cities">
+      <input
+        :id="city"
+        type="radio"
+        :checked="selected === city"
+        @change="radioValueUpdate(city)"
+      />
+      <label class="label" :for="city">{{ city }}</label>
+    </div>
   </div>
 </template>
 
-<style lang="scss"></style>
+<style src="./radio.scss" lang="scss"></style>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
@@ -24,8 +26,8 @@ export default defineComponent({
     },
   },
   methods: {
-    handleRadioButton(value: string) {
-      this.$emit('handleRadioButton', value);
+    radioValueUpdate(value: string) {
+      this.$emit('radioValueUpdate', value);
     },
   },
 });

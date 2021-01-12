@@ -16,8 +16,8 @@
             />
           </div>
           <div class="col-sm-4 col-xs-12">
-            <span>{{ job.location }}</span>
-            <span>{{ job.created_at }}</span>
+            <p>{{ job.location }}</p>
+            <p>{{ moment(job.created_at) }} </p>
           </div>
         </div>
       </div>
@@ -28,17 +28,22 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import moment from 'moment';
 import Button from '../button/button.vue';
 
-export default defineComponent({
-  components: {
-    Button,
+export default defineComponent(
+  {
+    components: {
+      Button,
+    },
+    props: {
+      job: Object,
+    },
+    methods: {
+      moment(date: string) {
+        return moment(date).fromNow();
+      },
+    },
   },
-  props: {
-    job: Object,
-  },
-  // mounted() {
-  //   console.log(this.Button);
-  // },
-});
+);
 </script>

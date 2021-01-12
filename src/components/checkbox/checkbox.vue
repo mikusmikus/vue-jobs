@@ -6,7 +6,6 @@
     @change="handleCheckbox"
   />
   <label class="label" :for="id">{{ label }}</label>
-  {{ inputValue }}
 </template>
 
 <style lang="scss"></style>
@@ -22,10 +21,6 @@ export default defineComponent({
     },
     id: {
       type: String,
-    },
-    inputValue: {
-      type: String,
-      required: false,
     },
     checked: {
       type: Boolean,

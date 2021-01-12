@@ -6,7 +6,7 @@
         type="text"
         placeholder="Title, companies, expertise or benefits"
         :value="value"
-        @change="handleInput"
+        @input="$emit('inputValueUpdate', $event.target.value)"
       />
       <i class="material-icons">work_outline</i>
       <Button label="Search" class="searchButton" @buttonClick="$emit('buttonClick')" />
@@ -25,11 +25,6 @@ const SearchBar = defineComponent({
   components: { Button },
   props: {
     value: String,
-  },
-  methods: {
-    handleInput(event: { target: { value: string } }) {
-      this.$emit('handleInput', event.target.value);
-    },
   },
 });
 
