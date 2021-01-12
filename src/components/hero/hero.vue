@@ -6,14 +6,16 @@
           <h2 class="title">
             {{ job.title }}
           </h2>
-          <Button class="button" >Full time   </Button>
+          <div class="fullTime" v-show="job.type === 'Full Time'">
+            Full time
+          </div>
         </div>
         <div class="row">
-                <div class="col-xs-12">
-          <div class="icon-wrapper">
-            <i class="material-icons">query_builder</i>
-            <span class="text-icons margin-bottom--32">{{ moment(job.created_at) }}</span>
-          </div>
+          <div class="col-xs-12">
+            <div class="icon-wrapper">
+              <i class="material-icons">query_builder</i>
+              <span class="text-icons margin-bottom--32">{{ moment(job.created_at) }}</span>
+            </div>
           </div>
           <div class="col-xs-12"></div>
         </div>
@@ -40,14 +42,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
 import moment from 'moment';
-import Button from '../button/button.vue';
 
 export default defineComponent({
   name: 'Hero',
   components: {
-    Button,
   },
   props: {
     job: Object,
