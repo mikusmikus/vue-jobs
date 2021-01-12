@@ -224,11 +224,11 @@ export default defineComponent({
         .catch((error) => Promise.reject(error));
     },
   },
-  // beforeUpdate() {
-  //   if (this.currentPage === this.pagesCount) {
-  //     this.getMoreData();
-  //   }
-  // },
+  beforeUpdate() {
+    if (!(this.pagesCount % 10) && this.currentPage === this.pagesCount) {
+      this.getMoreData();
+    }
+  },
   computed: {
     pageButtons(): number[] {
       const buttonArr: number[] = [];
