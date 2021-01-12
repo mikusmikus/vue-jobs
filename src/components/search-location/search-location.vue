@@ -1,13 +1,13 @@
 <template>
+  <h4 class="heading4">Location</h4>
   <div class="input-wrapper">
     <input
       class="input"
       type="text"
       placeholder="City, state, zip code or country"
       :value="value"
-      @input="handleInput"
+      @change="handleInput"
     />
-
     <i class="material-icons md-18">public</i>
   </div>
 </template>

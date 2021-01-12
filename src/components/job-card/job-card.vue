@@ -44,9 +44,19 @@ import { defineComponent } from 'vue';
 import moment from 'moment';
 import Button from '../button/button.vue';
 
-export default defineComponent({
-  components: {
-    Button,
+export default defineComponent(
+  {
+    components: {
+      Button,
+    },
+    props: {
+      job: Object,
+    },
+    methods: {
+      moment(date: string) {
+        return moment(date).fromNow();
+      },
+    },
   },
   props: {
     job: Object,

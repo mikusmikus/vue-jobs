@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div class="container">
+    <div class="container container-fluid">
       <div class="row start-xs">
         <div class="col-xs-12">
           <div class="logo-wrapper">
-          <img src="./assets/logo.png" alt="" width="145">
+          <img src="./assets/logo.png" alt="" width="145" @click="$router.push('/')">
           </div>
         </div>
       </div>

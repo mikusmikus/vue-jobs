@@ -1,6 +1,8 @@
 <template>
   <button type="button" @click="$emit('buttonClick')">
     {{ label }}
+    <slot>
+      </slot>
   </button>
 </template>
 
