@@ -9,7 +9,7 @@
         @input="$emit('inputValueUpdate', $event.target.value)"
       />
       <i class="material-icons">work_outline</i>
-      <Button label="Search" class="searchButton" @buttonClick="$emit('buttonClick')" />
+      <Button class="searchButton" @buttonClick="$emit('buttonClick')">Search </Button>
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@
           <h2 class="title">
             {{ job.title }}
           </h2>
-          <Button label="Full time" class="button" />
+          <Button class="button" >Full time   </Button>
         </div>
         <div class="row">
                 <div class="col-xs-12">

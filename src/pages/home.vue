@@ -44,55 +44,17 @@
             </div>
           </template>
         </div>
-        <div class="row end-xs middle-xs">
+        <div class="row end-xs ">
           <div class="col-xs-12">
-            <Button
-              class="pageButton"
-              @click="currentPage = currentPage - 1"
-              label="<"
-              v-show="pagesCount > 1"
-              :disabled="currentPage === 1"
-            />
-            <span class="pageDots" v-show="currentPage < 3"> </span>
-            <Button
-              class="pageButton"
-              @click="currentPage = 1"
-              :label="1"
-              v-show="currentPage > 2"
-              v-bind:class="{ active: currentPage === 1 }"
-            />
-            <span class="pageDots">
-              <i class="material-icons" v-show="currentPage > 3">
-                more_horiz
-              </i>
-            </span>
-            <Button
-              class="pageButton"
-              v-for="page in pageButtons"
-              :key="page"
-              @buttonClick="currentPage = page"
-              v-bind:class="{ active: currentPage === page }"
-              :label="page"
-            />
-            <div class="pageDots">
-              <i class="material-icons" v-show="currentPage < pagesCount - 2">
-                more_horiz
-              </i>
-            </div>
-            <span class="pageDots" v-show="currentPage > pagesCount - 2"> </span>
-            <Button
-              class="pageButton"
-              @click="currentPage = pagesCount"
-              :label="pagesCount"
-              v-show="currentPage < pagesCount - 1"
-              v-bind:class="{ active: currentPage === pagesCount }"
-            />
-            <Button
-              class="pageButton"
-              @click="currentPage = currentPage + 1"
-              label=">"
-              v-show="pagesCount > 1"
-              :disabled="currentPage === pagesCount"
+            <PageButtons
+              :currentPage="currentPage"
+              :pagesCount="pagesCount"
+              :pageButtons="pageButtons"
+              @previousPage="currentPage = currentPage - 1"
+              @firstPage="currentPage = 1"
+              @currentPage="currentPage = $event"
+              @lastPage="currentPage = pagesCount"
+              @nextPage="currentPage = currentPage + 1"
             />
           </div>
         </div>
@@ -110,7 +72,7 @@ import JobCard from '../components/job-card/job-card.vue';
 import SearchBar from '../components/search/search.vue';
 import SearchLocation from '../components/search-location/search-location.vue';
 import Checkbox from '../components/checkbox/checkbox.vue';
-import Button from '../components/button/button.vue';
+import PageButtons from '../components/page-buttons/page-buttons.vue';
 import RadioList from '../components/radio-list/radio.vue';
 import Loader from '../components/loader/loader.vue';
 import { Job } from '../helpers/types/types';
@@ -137,7 +99,7 @@ export default defineComponent({
     Checkbox,
     SearchLocation,
     RadioList,
-    Button,
+    PageButtons,
   },
   data(): Data {
     return {
@@ -197,12 +159,12 @@ export default defineComponent({
       } else if (this.selectedRadio) {
         url += `&location=${this.selectedRadio.toLowerCase()}`;
       }
+
       axios.get(`${accessPoint}/${url}`).then(({ data }) => {
         const filteredJobs = data.map((job: Job) => job);
         this.jobList = filteredJobs;
         this.pagesCount = Math.ceil(this.jobList.length / 5);
         this.loading = false;
-        console.log(this.jobList);
       });
     },
     getMoreData() {
@@ -225,7 +187,11 @@ export default defineComponent({
     },
   },
   beforeUpdate() {
-    if (!(this.pagesCount % 10) && this.currentPage === this.pagesCount) {
+    if (
+      this.jobList.length > 50 * this.dataPage - 1
+      && this.currentPage === this.pagesCount
+      && !(this.jobList.length % 50)
+    ) {
       this.getMoreData();
     }
   },
@@ -255,7 +221,7 @@ export default defineComponent({
     filteredJobs(): Job[] {
       if (this.isFullTime) {
         const fullTimeJobs = this.jobList.filter((job) => job.type === 'Full Time');
-        return fullTimeJobs.slice(this.currentPage - 1 * 5, this.currentPage * 5);
+        return fullTimeJobs.slice((this.currentPage - 1) * 5, this.currentPage * 5);
       }
       return this.jobList.slice((this.currentPage - 1) * 5, this.currentPage * 5);
     },

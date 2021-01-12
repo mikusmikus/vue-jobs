@@ -43,14 +43,12 @@ export default defineComponent({
     const jobId = this.$route.params.id;
     const url = `https://jobs.github.com/positions/${jobId}.json`;
     axios.get(url).then((res) => {
-      console.log(res.data);
       this.job = res.data;
       this.loading = false;
     });
   },
   methods: {
     backToHome() {
-      console.log('back to Home');
       router.push({ path: '/' });
     },
   },

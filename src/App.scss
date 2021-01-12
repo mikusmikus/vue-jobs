@@ -13,48 +13,6 @@ body {
   cursor: pointer;
 }
 
-.pageButton {
-  width: 36px;
-  height: 36px;
-  font-family: "Roboto", sans-serif;
-  color: #b9bdcf;
-  font-size: 12px;
-  border-radius: 4px;
-  margin: 6px;
-  line-height: 14px;
-  box-sizing: border-box;
-  border: 1px solid #b7bcce;
-  outline: none;
-  cursor: pointer;
-  &:hover {
-    border: 2px solid #1e86ff;
-    color: #1e86ff;
-  }
-}
-.active {
-  background-color: #1e86ff;
-  border: 1px solid #1e86ff;
-  color: white;
-  &:hover {
-    border: 2px solid #1e86ff;
-    color: white;
-  }
-}
-.pageDots{
-  position: relative;
-  display: inline-flex;
-  margin: 0 6px;
-  width: 36px;
-  height: 36px;
-}
-
-// .material-icons{
-//   position: absolute;
-//   top: 50%;
-//   color: #B7BCCE;
-//   margin: 0 5px;
-// }
-
 .margin-bottom--8 {
   margin-bottom: 8px;
 }
