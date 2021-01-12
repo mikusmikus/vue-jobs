@@ -6,13 +6,10 @@
       </div>
     </div>
     <div class="row" v-else>
-      <div class="col-xs-4">
+      <div class="col-xs-12 col-sm-4 col-md-3">
         <ApllyCard :job="job"/>
-        <!-- <Button label="Back" to search @buttonClick="backToHome()" />
-        <h4>HOW TO APPLY</h4>
-        <span v-html="job.how_to_apply"></span> -->
       </div>
-      <div class="col-xs-8">
+      <div class="col-xs-12 col-sm-8 col-md-9">
         <Hero :job="job" />
       </div>
     </div>

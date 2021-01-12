@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="col-xs-8">
-        <div class="row center-xs">
+        <div class="row">
           <div class="col-xs-12" v-if="loading">
             <Loader />
           </div>
