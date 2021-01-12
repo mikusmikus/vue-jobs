@@ -83,7 +83,7 @@
             <Button
               class="pageButton"
               @click="currentPage = pagesCount"
-              :label="pagesCount"
+              :label="'pagesCount'"
               v-show="currentPage < pagesCount - 1"
               v-bind:class="{ active: currentPage === pagesCount }"
             />
@@ -122,9 +122,10 @@ interface Data {
   searchText: string;
   locationText: string;
   selectedRadio: string;
+  isFullTime: boolean;
+  dataPage: number;
   currentPage: number;
   pagesCount: number;
-  isFullTime: boolean;
 }
 const cities = ['london', 'amsterdam', 'New York', 'Berlin'];
 
@@ -147,6 +148,7 @@ export default defineComponent({
       locationText: '',
       selectedRadio: '',
       isFullTime: false,
+      dataPage: 1,
       currentPage: 1,
       pagesCount: 1,
     };
@@ -187,7 +189,7 @@ export default defineComponent({
       this.loading = true;
       const accessPoint = 'https://cors-anywhere.herokuapp.com';
       const text = this.searchText.split(' ').join('');
-      let url = 'https://jobs.github.com/positions.json?page= 1';
+      let url = `https://jobs.github.com/positions.json?page=${this.dataPage}`;
       if (this.searchText) {
         url += `&search=${text.toLowerCase()}`;
       } else if (this.locationText) {
