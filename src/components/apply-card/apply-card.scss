@@ -1,18 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+
+.apply-card {
+  padding-left: 13px;
+  padding-right: 19px;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+}
 
 .material-icons {
   font-size: 30px; /* Preferred icon size */
   transform: rotate(180deg);
-  transform: matrix(-1, 0, 0, 1, 0, 0);
   color: #1e86ff;
-  margin:0;
-  // width: 19px;
-}
-
-.button-wrapper {
-  display:flex;
-  align-items: center;
-  // margin-top:
+  margin: 0;
+  cursor: pointer;
+  &:hover {
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
 }
 
 .button {
@@ -27,6 +33,28 @@
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
-    text-decoration:underline;
+    text-decoration: underline;
   }
+}
+
+.applay-wrapper {
+  display: block;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  color: #b9bdcf;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+.text {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #334680;
 }

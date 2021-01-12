@@ -1,6 +1,16 @@
 $MainBlue: #334680;
 $MainGrey: #b9bdcf;
 
+.hero {
+  padding-left: 13px;
+  padding-right:19px;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .title {
   display: inline-flex;
   font-size: 24px;
@@ -24,7 +34,6 @@ $MainGrey: #b9bdcf;
 }
 
 .button {
-  display: inline-flex;
   padding: 6px 8px;
   font-size: 12px;
   font-weight: 700;
@@ -37,7 +46,8 @@ $MainGrey: #b9bdcf;
 }
 
 .logo {
-  max-height:42px;
+  max-height: 42px;
+  margin-right: 12px;
 }
 
 .company-wrapper {
@@ -46,7 +56,7 @@ $MainGrey: #b9bdcf;
 }
 
 .company {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 

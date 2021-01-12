@@ -1,10 +1,14 @@
 <template>
-  <div class="button-wrapper">
+<div class="apply-card">
+    <div class="button-wrapper">
     <i class="material-icons">arrow_right_alt</i>
     <Button class="button" label="Back to search" to search @buttonClick="$router.push('/')" />
   </div>
-  <h4>HOW TO APPLY</h4>
-  <span v-html="job.how_to_apply"></span>
+  <div class="applay-wrapper">
+    <h4 class="title">how to apply</h4>
+    <span class="text" v-html="job.how_to_apply"></span>
+  </div>
+</div>
 </template>
 
 <style src="./apply-card.scss" lang="scss" scoped></style>
