@@ -1,9 +1,12 @@
 {
   "name": "vue-job-list",
   "version": "0.1.0",
+  "homepage": "http://mikusmikus.github.io/vue-jobs",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
