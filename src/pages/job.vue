@@ -20,7 +20,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-// eslint-disable-next-line import/order
 // eslint-disable-next-line import/no-cycle
 import router from '@/router';
 import axios from 'axios';
@@ -38,7 +37,7 @@ export default defineComponent({
     loading: false,
     job: {},
   }),
-  mounted() {
+  beforeCreate() {
     this.loading = true;
     const jobId = this.$route.params.id;
     const url = `https://jobs.github.com/positions/${jobId}.json`;

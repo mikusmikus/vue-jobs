@@ -41,7 +41,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import moment from 'moment';
-import Button from '../button/button.vue';
 
 export default defineComponent({
   components: {

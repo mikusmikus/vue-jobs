@@ -14,8 +14,9 @@
       v-show="currentPage > 2"
       @buttonClick="$emit('firstPage')"
       v-bind:class="{ active: currentPage === 1 }"
-      >1</Button
     >
+      1
+    </Button>
     <span class="pageDots">
       <i class="material-icons" v-show="currentPage > 3">
         more_horiz

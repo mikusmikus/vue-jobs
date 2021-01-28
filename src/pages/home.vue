@@ -213,9 +213,7 @@ export default defineComponent({
       if (this.currentPage >= this.pagesCount - 1) {
         return [this.pagesCount - 2, this.pagesCount - 1, this.pagesCount];
       }
-      buttonArr.push(this.currentPage - 1);
-      buttonArr.push(this.currentPage);
-      buttonArr.push(this.currentPage + 1);
+      buttonArr.push(this.currentPage - 1, this.currentPage, this.currentPage + 1);
       return buttonArr;
     },
     filteredJobs(): Job[] {
